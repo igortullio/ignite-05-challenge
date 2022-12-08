@@ -1,0 +1,6 @@
+{
+  "name": "@igortullio-ui/ts-config",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js"
+}
