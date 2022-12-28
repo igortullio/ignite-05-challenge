@@ -1,7 +1,7 @@
 {
   "name": "@igortullio-ui/tokens",
   "version": "1.0.2",
-  "description": "",
+  "description": "@igortullio-ui tokens",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -11,7 +11,7 @@
     "lint": "eslint src/**/*.ts* --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "Igor Túllio <igortullio@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@igortullio-ui/ts-config": "*",

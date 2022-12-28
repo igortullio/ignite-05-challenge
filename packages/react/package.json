@@ -1,18 +1,22 @@
 {
   "name": "@igortullio-ui/react",
   "version": "1.0.2",
-  "description": "",
+  "description": "@igortullio-ui React component lib",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "dev": "tsup src/index.tsx --format esm,cjs --dts --external react --watch",
-    "lint": "eslint src/**/*.ts* --fix"
+    "build": "tsup src/index.tsx",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint src/**/*.ts* --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Igor Túllio <igortullio@hotmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.1",
     "@radix-ui/react-checkbox": "^1.0.1",
