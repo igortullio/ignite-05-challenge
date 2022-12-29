@@ -18,6 +18,8 @@ export const {
   theme,
   createTheme,
   config,
+  reset,
+  prefix,
 } = createStitches({
   theme: {
     colors,
