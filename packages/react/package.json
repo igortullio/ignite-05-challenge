@@ -1,7 +1,7 @@
 {
   "name": "@igortullio-ui/react",
-  "version": "1.0.2",
-  "description": "@igortullio-ui React component lib",
+  "version": "2.0.1",
+  "description": "React component lib",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

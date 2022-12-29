@@ -1,7 +1,7 @@
 {
   "name": "@igortullio-ui/tokens",
-  "version": "1.0.2",
-  "description": "@igortullio-ui tokens",
+  "version": "2.0.0",
+  "description": "Tokens for UI",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
