@@ -1,4 +1,4 @@
-export * from './styles'
+export { styled, getCssText } from './styles'
 export * from './components/Box'
 export * from './components/Text'
 export * from './components/Heading'
