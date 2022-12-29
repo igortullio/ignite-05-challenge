@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 2.0.2
+
+### Patch Changes
+
+- 48f8527: Update stitches exports
+
 ## 2.0.1
 
 ### Patch Changes
