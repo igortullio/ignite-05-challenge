@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 2.0.7
+
+### Patch Changes
+
+- dc56dcb: Test export
+
 ## 2.0.6
 
 ### Patch Changes
