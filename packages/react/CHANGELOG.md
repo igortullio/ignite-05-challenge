@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 2.0.5
+
+### Patch Changes
+
+- 3b55639: Update npmignore
+
 ## 2.0.4
 
 ### Patch Changes
