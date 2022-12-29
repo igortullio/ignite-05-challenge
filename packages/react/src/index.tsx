@@ -1,11 +1,4 @@
-export {
-  createStitches,
-  createTheme,
-  globalCss,
-  keyframes,
-  css,
-  styled,
-} from '@stitches/react'
+export * from '@stitches/react'
 export * from './components/Box'
 export * from './components/Text'
 export * from './components/Heading'
