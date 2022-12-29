@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 2.0.4
+
+### Patch Changes
+
+- f798bb2: Add npm ignore
+
 ## 2.0.3
 
 ### Patch Changes
