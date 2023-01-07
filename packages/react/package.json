@@ -1,6 +1,6 @@
 {
   "name": "@igortullio-ui/react",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "React component lib",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -11,6 +11,9 @@
     "lint": "eslint src/**/*.ts* --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "Igor Túllio <igortullio@hotmail.com>",
   "license": "MIT",
