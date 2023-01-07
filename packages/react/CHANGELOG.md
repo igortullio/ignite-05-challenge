@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 2.0.9
+
+### Patch Changes
+
+- 639a5e8: Fix to deploy
+
 ## 2.0.7
 
 ### Patch Changes
