@@ -1,10 +1,12 @@
-# Ignite Design System
+# igortullio-ui
 
-A React Design System with tokens, components, and interactive Storybook documentation. Published on npm as `@igortullio-ui/react`.
+A React Design System with tokens, components, and interactive Storybook documentation. Published on npm as [`@igortullio-ui/react`](https://www.npmjs.com/package/@igortullio-ui/react).
+
+> Built as part of [Rocketseat Ignite](https://www.rocketseat.com.br/ignite) course.
 
 ## Demo
 
-[Storybook](https://igortullio.github.io/ignite-05-challenge/?path=/story/home--page)
+[Storybook](https://igortullio.github.io/igortullio-ui/?path=/story/home--page)
 
 ## Packages
 
@@ -29,8 +31,8 @@ A React Design System with tokens, components, and interactive Storybook documen
 ## Getting Started
 
 ```bash
-git clone https://github.com/igortullio/ignite-05-challenge.git
-cd ignite-05-challenge
+git clone https://github.com/igortullio/igortullio-ui.git
+cd igortullio-ui
 npm install
 npm run dev
 ```
