@@ -1,0 +1,2 @@
+import{A as t}from"./index.cfca3960.js";import"./index.311fa0f2.js";import"./iframe.ca1f0077.js";import"./index.95ed64d8.js";import"./jsx-runtime.021b7e24.js";const l={title:"Data display/Avatar",component:t,argTypes:{src:{control:{type:"text"}}}},p={args:{src:"https://github.com/igortullio.png",alt:"Igor T\xFAllio"}},c={args:{src:void 0}},m=["Primary","WithFallback"];export{p as Primary,c as WithFallback,m as __namedExportsOrder,l as default};
+//# sourceMappingURL=Avatar.stories.adb2e584.js.map
