@@ -10,7 +10,7 @@ export default {
       return (
         <Box
           as="label"
-          css={{ display: 'flex', flexDirection: 'column', gap: '$2' }}
+          className="flex flex-col gap-2"
         >
           <Text size="sm">Observations</Text>
           {Story()}
