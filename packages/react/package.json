@@ -5,14 +5,31 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles.css": "./dist/styles.css"
+  },
   "scripts": {
-    "build": "tsup src/index.tsx",
+    "build:css": "npx @tailwindcss/cli -i ./src/styles/globals.css -o ./dist/styles.css --minify",
+    "build:js": "npx tsup",
+    "build": "npm run build:js && npm run build:css",
     "dev": "npm run build -- --watch",
-    "lint": "eslint src/**/*.ts* --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint src/**/*.ts* --fix",
+    "test": "npx vitest run",
+    "test:watch": "npx vitest"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "keywords": [],
   "author": "Igor Túllio <igortullio@hotmail.com>",
@@ -23,17 +40,21 @@
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.1",
     "@radix-ui/react-checkbox": "^1.0.1",
-    "@stitches/react": "^1.2.8",
+    "tailwind-variants": "^0.3.0",
     "phosphor-react": "^1.4.1"
   },
   "devDependencies": {
     "@igortullio-ui/eslint-config": "*",
-    "@igortullio-ui/tokens": "*",
     "@igortullio-ui/ts-config": "*",
+    "@tailwindcss/cli": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "react": "^18.2.0",
-    "tsup": "^6.5.0",
-    "typescript": "^4.9.3"
+    "tailwindcss": "^4.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "vitest": "^2.0.0"
   }
 }

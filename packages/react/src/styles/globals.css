@@ -1,0 +1,131 @@
+/**
+ * @igortullio-ui Design System - Global Styles
+ *
+ * Tailwind CSS v4 configuration using CSS-first approach.
+ * Design tokens are defined using @theme inline directive.
+ *
+ * Usage in consuming applications:
+ * - Import this file: import '@igortullio-ui/react/styles.css'
+ * - Add @source directive pointing to this package's src files
+ *
+ * @see https://tailwindcss.com/docs/theme
+ */
+@import "tailwindcss";
+
+/**
+ * Source directive for automatic class detection in component files.
+ * This ensures Tailwind scans all component files for utility classes.
+ */
+@source "../components/**/*.tsx";
+
+/**
+ * Design tokens defined as CSS custom properties using @theme inline.
+ * These tokens match the original @igortullio-ui/tokens package values.
+ *
+ * Naming convention follows Tailwind v4 theme variable namespaces:
+ * - --color-*: Color tokens (generates bg-*, text-*, border-*, etc.)
+ * - --font-*: Font family tokens (generates font-*)
+ * - --font-size-*: Font size tokens (generates text-*)
+ * - --font-weight-*: Font weight tokens (generates font-*)
+ * - --line-height-*: Line height tokens (generates leading-*)
+ * - --radius-*: Border radius tokens (generates rounded-*)
+ * - --spacing-*: Spacing tokens (generates p-*, m-*, gap-*, etc.)
+ */
+@theme inline {
+  /* Colors - Base */
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Colors - Gray scale */
+  --color-gray-100: #e1e1e6;
+  --color-gray-200: #a9a9b2;
+  --color-gray-400: #7c7c8a;
+  --color-gray-500: #505059;
+  --color-gray-600: #323238;
+  --color-gray-700: #29292e;
+  --color-gray-800: #202024;
+  --color-gray-900: #121214;
+
+  /* Colors - Ignite (brand) */
+  --color-ignite-300: #00b37e;
+  --color-ignite-500: #00875f;
+  --color-ignite-700: #015f43;
+  --color-ignite-900: #00291d;
+
+  /* Font families */
+  --font-default: "Roboto", sans-serif;
+  --font-code: monospace;
+
+  /* Font sizes */
+  --font-size-xxs: 0.625rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-4xl: 2rem;
+  --font-size-5xl: 2.25rem;
+  --font-size-6xl: 3rem;
+  --font-size-7xl: 4rem;
+  --font-size-8xl: 4.5rem;
+  --font-size-9xl: 6rem;
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-shorter: 125%;
+  --line-height-short: 140%;
+  --line-height-base: 160%;
+  --line-height-tall: 180%;
+
+  /* Border radius */
+  --radius-px: 1px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 99999px;
+
+  /* Spacing - maps to Tailwind's spacing scale */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-40: 10rem;
+  --spacing-64: 16rem;
+  --spacing-80: 20rem;
+}
+
+/**
+ * Base styles for the design system.
+ * Sets default font family and background for dark theme.
+ */
+@layer base {
+  :root {
+    font-family: var(--font-default);
+    background-color: var(--color-gray-900);
+    color: var(--color-gray-100);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
