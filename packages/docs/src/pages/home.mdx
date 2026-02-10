@@ -2,6 +2,62 @@ import { Meta } from '@storybook/blocks'
 
 <Meta title="Home" />
 
-# UI
+# igortullio-ui
 
-Design System
+A React Design System with 9 accessible components built with Tailwind CSS v4 and Tailwind Variants.
+
+## Getting Started
+
+Install the package:
+
+```bash
+npm install @igortullio-ui/react
+```
+
+Import styles and components:
+
+```tsx
+// Import the styles (REQUIRED)
+import '@igortullio-ui/react/styles.css'
+
+// Import components
+import { Button, Text, Box } from '@igortullio-ui/react'
+```
+
+> ⚠️ **Important:** You MUST import `@igortullio-ui/react/styles.css` for components to be styled correctly.
+
+## Components
+
+| Component | Description |
+|-----------|-------------|
+| **Avatar** | User profile image with fallback icon |
+| **Box** | Container with default styling |
+| **Button** | Interactive button with variants |
+| **Checkbox** | Accessible checkbox input |
+| **Heading** | Semantic heading element |
+| **MultiStep** | Step progress indicator |
+| **Text** | Text paragraph element |
+| **TextArea** | Multi-line text input |
+| **TextInput** | Single-line text input with optional prefix |
+
+## Styling
+
+This library uses **Tailwind CSS v4** with a CSS-first approach:
+
+- Design tokens are defined using `@theme inline` directive
+- Component variants are implemented with [Tailwind Variants](https://www.tailwind-variants.org/)
+- Accessible primitives from [Radix UI](https://www.radix-ui.com/) for Avatar and Checkbox
+
+### Customization
+
+All components accept a `className` prop for custom styling:
+
+```tsx
+<Button className="my-custom-class">Custom Button</Button>
+```
+
+## Links
+
+- [GitHub Repository](https://github.com/igortullio/igortullio-ui)
+- [npm Package](https://www.npmjs.com/package/@igortullio-ui/react)
+- [Migration Guide](https://github.com/igortullio/igortullio-ui/blob/main/MIGRATION.md)
