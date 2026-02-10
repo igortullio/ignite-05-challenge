@@ -1,8 +1,9 @@
 /**
  * Vite configuration for @igortullio-ui/docs (Storybook)
  *
- * Tailwind CSS styles are pre-compiled in @igortullio-ui/react package
- * and imported via preview.ts, so no Tailwind plugin is needed here.
+ * Tailwind CSS v4 is integrated via @tailwindcss/vite plugin configured
+ * in .storybook/main.ts viteFinal hook for proper Storybook integration.
+ * This enables HMR for Tailwind classes during development.
  *
  * @see https://storybook.js.org/docs/8/get-started/frameworks/react-vite
  */

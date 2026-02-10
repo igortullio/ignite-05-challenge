@@ -1,14 +1,15 @@
 /**
  * Storybook preview configuration for @igortullio-ui/docs
  *
- * Imports Tailwind CSS v4 globals from @igortullio-ui/react package.
+ * Imports Tailwind CSS v4 via @tailwindcss/vite plugin for HMR support.
+ * The tailwind.css file configures source scanning and imports design tokens.
  * Theme is set to dark mode by default.
  *
  * @see https://storybook.js.org/docs/8/configure#configure-story-rendering
  */
 import type { Preview } from '@storybook/react-vite'
 import { themes } from '@storybook/theming'
-import '@igortullio-ui/react/styles.css'
+import '../src/styles/tailwind.css'
 
 const preview: Preview = {
   parameters: {

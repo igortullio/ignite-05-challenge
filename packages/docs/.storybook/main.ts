@@ -42,7 +42,14 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true,
   },
-  viteFinal: (config, { configType }) => {
+  viteFinal: async (config, { configType }) => {
+    // Import @tailwindcss/vite plugin for Tailwind CSS v4 processing
+    const tailwindcss = await import('@tailwindcss/vite').then(m => m.default)
+
+    // Add Tailwind CSS plugin to Vite
+    config.plugins = config.plugins || []
+    config.plugins.push(tailwindcss())
+
     if (configType === 'PRODUCTION') {
       config.base = '/igortullio-ui/'
     }
