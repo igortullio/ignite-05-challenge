@@ -7,22 +7,15 @@
  * Build outputs:
  * - dist/index.js (CJS)
  * - dist/index.mjs (ESM)
- * - dist/index.d.ts (TypeScript declarations) - TEMPORARILY DISABLED
+ * - dist/index.d.ts (TypeScript declarations)
  * - dist/styles.css (compiled by Tailwind CLI, not tsup)
  *
  * @see package.json build:css script for CSS compilation
- *
- * NOTE: TypeScript declarations (dts) are temporarily disabled during the
- * Tailwind CSS v4 migration. They will be re-enabled after all components
- * are migrated from Stitches to tailwind-variants in the subsequent task.
- * The current Stitches compatibility stubs cause type inference issues that
- * will be resolved once components use the new styling approach.
  */
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
-  // TODO: Re-enable dts after component migration to tailwind-variants
-  dts: false,
+  dts: true,
   entry: ['src/index.tsx'],
   external: ['react', 'react-dom'],
   format: ['esm', 'cjs'],

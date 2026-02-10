@@ -1,18 +1,23 @@
+import * as RadixAvatar from '@radix-ui/react-avatar'
 import { User } from 'phosphor-react'
 import { ComponentProps } from 'react'
-import { AvatarContainer, AvatarImage, AvatarFallback } from './styles'
+import { avatarStyles } from './styles'
 
-export interface AvatarProps extends ComponentProps<typeof AvatarImage> {}
+export interface AvatarProps extends ComponentProps<typeof RadixAvatar.Image> {
+  className?: string
+}
 
-export function Avatar(props: AvatarProps) {
+export function Avatar({ className, ...props }: AvatarProps) {
+  const { container, image, fallback } = avatarStyles()
+
   return (
-    <AvatarContainer>
-      <AvatarImage {...props} />
+    <RadixAvatar.Root className={container({ className })}>
+      <RadixAvatar.Image className={image()} {...props} />
 
-      <AvatarFallback delayMs={600}>
+      <RadixAvatar.Fallback className={fallback()} delayMs={600}>
         <User />
-      </AvatarFallback>
-    </AvatarContainer>
+      </RadixAvatar.Fallback>
+    </RadixAvatar.Root>
   )
 }
 

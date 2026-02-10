@@ -1,17 +1,22 @@
+import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import { Check } from 'phosphor-react'
 import { ComponentProps } from 'react'
-import { CheckboxContainer, CheckboxIndicator } from './styles'
+import { checkboxStyles } from './styles'
 
 export interface CheckboxProps
-  extends ComponentProps<typeof CheckboxContainer> {}
+  extends ComponentProps<typeof RadixCheckbox.Root> {
+  className?: string
+}
 
-export function Checkbox(props: CheckboxProps) {
+export function Checkbox({ className, ...props }: CheckboxProps) {
+  const { container, indicator } = checkboxStyles()
+
   return (
-    <CheckboxContainer {...props}>
-      <CheckboxIndicator asChild>
+    <RadixCheckbox.Root className={container({ className })} {...props}>
+      <RadixCheckbox.Indicator className={indicator()} asChild>
         <Check weight="bold" />
-      </CheckboxIndicator>
-    </CheckboxContainer>
+      </RadixCheckbox.Indicator>
+    </RadixCheckbox.Root>
   )
 }
 

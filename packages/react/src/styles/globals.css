@@ -106,6 +106,31 @@
   --spacing-40: 10rem;
   --spacing-64: 16rem;
   --spacing-80: 20rem;
+
+  /* Animations */
+  --animate-slide-in: slide-in 200ms ease-out;
+  --animate-slide-out: slide-out 200ms ease-out;
+}
+
+/**
+ * Custom keyframe animations for component transitions.
+ */
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
 
 /**
@@ -127,5 +152,16 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+}
+
+/**
+ * Component-specific utility classes.
+ * These utilities support CSS custom property-based dynamic values.
+ */
+@layer utilities {
+  /* MultiStep component: dynamic grid columns based on --steps-size */
+  .grid-cols-steps {
+    grid-template-columns: repeat(var(--steps-size), 1fr);
   }
 }

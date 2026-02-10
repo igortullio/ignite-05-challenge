@@ -1,37 +1,46 @@
-import { ComponentProps, ElementType } from 'react'
-import { styled } from '../styles'
+import { ComponentProps, ElementType, forwardRef } from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-export const Text = styled('p', {
-  fontFamily: '$default',
-  lineHeight: '$base',
-  margin: 0,
-  color: '$gray100',
-
+export const textStyles = tv({
+  base: 'font-default leading-base m-0 text-gray-100',
   variants: {
     size: {
-      xxs: { fontSize: '$xxs' },
-      xs: { fontSize: '$xs' },
-      sm: { fontSize: '$sm' },
-      md: { fontSize: '$md' },
-      lg: { fontSize: '$lg' },
-      xl: { fontSize: '$xl' },
-      '2xl': { fontSize: '$2xl' },
-      '4xl': { fontSize: '$4xl' },
-      '5xl': { fontSize: '$5xl' },
-      '6xl': { fontSize: '$6xl' },
-      '7xl': { fontSize: '$7xl' },
-      '8xl': { fontSize: '$8xl' },
-      '9xl': { fontSize: '$9xl' },
+      xxs: 'text-xxs',
+      xs: 'text-xs',
+      sm: 'text-sm',
+      md: 'text-md',
+      lg: 'text-lg',
+      xl: 'text-xl',
+      '2xl': 'text-2xl',
+      '4xl': 'text-4xl',
+      '5xl': 'text-5xl',
+      '6xl': 'text-6xl',
+      '7xl': 'text-7xl',
+      '8xl': 'text-8xl',
+      '9xl': 'text-9xl',
     },
   },
-
   defaultVariants: {
     size: 'md',
   },
 })
 
-export interface TextProps extends ComponentProps<typeof Text> {
+export type TextVariants = VariantProps<typeof textStyles>
+
+export interface TextProps extends ComponentProps<'p'>, TextVariants {
   as?: ElementType
 }
+
+export const Text = forwardRef<HTMLParagraphElement, TextProps>(
+  ({ as: Component = 'p', size, className, ...props }, ref) => {
+    return (
+      <Component
+        ref={ref}
+        className={textStyles({ size, className })}
+        {...props}
+      />
+    )
+  },
+)
 
 Text.displayName = 'Text'

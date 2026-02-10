@@ -1,32 +1,41 @@
-import { ComponentProps, ElementType } from 'react'
-import { styled } from '../styles'
+import { ComponentProps, ElementType, forwardRef } from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-export const Heading = styled('h2', {
-  fontFamily: '$default',
-  lineHeight: '$shorter',
-  margin: 0,
-  color: '$gray100',
-
+export const headingStyles = tv({
+  base: 'font-default leading-shorter m-0 text-gray-100',
   variants: {
     size: {
-      sm: { fontSize: '$xl' },
-      md: { fontSize: '$2xl' },
-      lg: { fontSize: '$4xl' },
-      xl: { fontSize: '$5xl' },
-      '2xl': { fontSize: '$6xl' },
-      '3xl': { fontSize: '$7xl' },
-      '4xl': { fontSize: '$8xl' },
-      '5xl': { fontSize: '$9xl' },
+      sm: 'text-xl',
+      md: 'text-2xl',
+      lg: 'text-4xl',
+      xl: 'text-5xl',
+      '2xl': 'text-6xl',
+      '3xl': 'text-7xl',
+      '4xl': 'text-8xl',
+      '5xl': 'text-9xl',
     },
   },
-
   defaultVariants: {
     size: 'md',
   },
 })
 
-export interface HeadingProps extends ComponentProps<typeof Heading> {
+export type HeadingVariants = VariantProps<typeof headingStyles>
+
+export interface HeadingProps extends ComponentProps<'h2'>, HeadingVariants {
   as?: ElementType
 }
+
+export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
+  ({ as: Component = 'h2', size, className, ...props }, ref) => {
+    return (
+      <Component
+        ref={ref}
+        className={headingStyles({ size, className })}
+        {...props}
+      />
+    )
+  },
+)
 
 Heading.displayName = 'Heading'

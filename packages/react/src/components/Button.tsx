@@ -1,99 +1,59 @@
-import { ComponentProps, ElementType } from 'react'
-import { styled } from '../styles'
+import { ComponentProps, ElementType, forwardRef } from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-export const Button = styled('button', {
-  all: 'unset',
-  borderRadius: '$sm',
-  fontSize: '$sm',
-  fontWeight: '$medium',
-  fontFamily: '$default',
-  textAlign: 'center',
-  minWidth: 120,
-  boxSizing: 'border-box',
-  padding: '0 $4',
-
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  gap: '$2',
-
-  cursor: 'pointer',
-
-  svg: {
-    width: '$4',
-    height: '$4',
-  },
-
-  '&:disabled': {
-    cursor: 'not-allowed',
-  },
-
-  '&:focus': {
-    boxShadow: '0 0 0 2px $colors$gray100',
-  },
-
+export const buttonStyles = tv({
+  base: [
+    'rounded-sm text-sm font-medium font-default text-center min-w-[120px] box-border px-4',
+    'flex items-center justify-center gap-2 cursor-pointer',
+    '[&_svg]:w-4 [&_svg]:h-4',
+    'disabled:cursor-not-allowed',
+    'focus:shadow-[0_0_0_2px_var(--color-gray-100)]',
+  ],
   variants: {
     variant: {
-      primary: {
-        color: '$white',
-        background: '$ignite500',
-
-        '&:not(:disabled):hover': {
-          background: '$ignite300',
-        },
-
-        '&:disabled': {
-          backgroundColor: '$gray200',
-        },
-      },
-
-      secondary: {
-        color: '$ignite300',
-        border: '2px solid $ignite500',
-
-        '&:not(:disabled):hover': {
-          background: '$ignite500',
-          color: '$white',
-        },
-
-        '&:disabled': {
-          color: '$gray200',
-          borderColor: '$gray200',
-        },
-      },
-
-      tertiary: {
-        color: '$gray100',
-
-        '&:not(:disabled):hover': {
-          color: '$white',
-        },
-
-        '&:disabled': {
-          color: '$gray600',
-        },
-      },
+      primary: [
+        'text-white bg-ignite-500',
+        'enabled:hover:bg-ignite-300',
+        'disabled:bg-gray-200',
+      ],
+      secondary: [
+        'text-ignite-300 bg-transparent border-2 border-ignite-500',
+        'enabled:hover:bg-ignite-500 enabled:hover:text-white',
+        'disabled:text-gray-200 disabled:border-gray-200',
+      ],
+      tertiary: [
+        'text-gray-100 bg-transparent',
+        'enabled:hover:text-white',
+        'disabled:text-gray-600',
+      ],
     },
-
     size: {
-      sm: {
-        height: 38,
-      },
-
-      md: {
-        height: 46,
-      },
+      sm: 'h-[38px]',
+      md: 'h-[46px]',
     },
   },
-
   defaultVariants: {
     variant: 'primary',
     size: 'md',
   },
 })
 
-export interface ButtonProps extends ComponentProps<typeof Button> {
+export type ButtonVariants = VariantProps<typeof buttonStyles>
+
+export interface ButtonProps extends ComponentProps<'button'>, ButtonVariants {
   as?: ElementType
 }
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ as: Component = 'button', variant, size, className, ...props }, ref) => {
+    return (
+      <Component
+        ref={ref}
+        className={buttonStyles({ variant, size, className })}
+        {...props}
+      />
+    )
+  },
+)
 
 Button.displayName = 'Button'

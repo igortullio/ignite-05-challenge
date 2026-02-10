@@ -1,32 +1,13 @@
-import * as Avatar from '@radix-ui/react-avatar'
-import { styled } from '../../styles'
+import { tv } from 'tailwind-variants'
 
-export const AvatarContainer = styled(Avatar.Root, {
-  borderRadius: '$full',
-  display: 'inline-block',
-  width: '$16',
-  height: '$16',
-  overflow: 'hidden',
-})
-
-export const AvatarImage = styled(Avatar.Image, {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  borderRadius: 'inherit',
-})
-
-export const AvatarFallback = styled(Avatar.Fallback, {
-  width: '100%',
-  height: '100%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '$gray600',
-  color: '$gray800',
-
-  svg: {
-    width: '$6',
-    height: '$6',
+export const avatarStyles = tv({
+  slots: {
+    container: 'rounded-full inline-block w-16 h-16 overflow-hidden',
+    image: 'w-full h-full object-cover rounded-[inherit]',
+    fallback: [
+      'w-full h-full flex items-center justify-center',
+      'bg-gray-600 text-gray-800',
+      '[&_svg]:w-6 [&_svg]:h-6',
+    ],
   },
 })

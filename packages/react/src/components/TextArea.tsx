@@ -1,35 +1,32 @@
-import { ComponentProps } from 'react'
-import { styled } from '../styles'
+import { ComponentProps, forwardRef } from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-export const TextArea = styled('textarea', {
-  backgroundColor: '$gray900',
-  padding: '$3 $4',
-  borderRadius: '$sm',
-  boxSizing: 'border-box',
-  border: '2px solid $gray900',
-
-  fontFamily: '$default',
-  fontSize: '$sm',
-  color: '$white',
-  fontWeight: '$regular',
-  resize: 'vertical',
-  minHeight: 80,
-
-  '&:focus': {
-    outline: 0,
-    borderColor: '$ignite300',
-  },
-
-  '&:disabled': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-
-  '&:placeholder': {
-    color: '$gray400',
-  },
+export const textAreaStyles = tv({
+  base: [
+    'bg-gray-900 py-3 px-4 rounded-sm box-border border-2 border-gray-900',
+    'text-sm text-white resize-y min-h-[80px]',
+    'focus:outline-none focus:border-ignite-300',
+    'disabled:opacity-50 disabled:cursor-not-allowed',
+    'placeholder:text-gray-400',
+  ],
 })
 
-export type TextAreaProps = ComponentProps<typeof TextArea>
+export type TextAreaVariants = VariantProps<typeof textAreaStyles>
+
+export interface TextAreaProps
+  extends ComponentProps<'textarea'>,
+    TextAreaVariants {}
+
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <textarea
+        ref={ref}
+        className={textAreaStyles({ className })}
+        {...props}
+      />
+    )
+  },
+)
 
 TextArea.displayName = 'TextArea'

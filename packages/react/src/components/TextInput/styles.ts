@@ -1,63 +1,34 @@
-import { styled } from '../../styles'
+import { tv, type VariantProps } from 'tailwind-variants'
 
-export const TextInputContainer = styled('div', {
-  backgroundColor: '$gray900',
-  borderRadius: '$sm',
-  boxSizing: 'border-box',
-  border: '2px solid $gray900',
-  display: 'flex',
-  alignItems: 'center',
-
+export const textInputStyles = tv({
+  slots: {
+    container: [
+      'bg-gray-900 rounded-sm box-border border-2 border-gray-900',
+      'flex items-center',
+      'has-[input:focus]:border-ignite-300',
+      'has-[input:disabled]:opacity-50 has-[input:disabled]:cursor-not-allowed',
+    ],
+    prefix: 'text-sm text-gray-400',
+    input: [
+      'text-sm text-white bg-transparent border-0 w-full',
+      'focus:outline-none',
+      'disabled:cursor-not-allowed',
+      'placeholder:text-gray-500',
+    ],
+  },
   variants: {
     size: {
       sm: {
-        padding: '$2 $3',
+        container: 'py-2 px-3',
       },
       md: {
-        padding: '$3 $4',
+        container: 'py-3 px-4',
       },
     },
   },
-
-  '&:has(input:focus)': {
-    borderColor: '$ignite300',
-  },
-
-  '&:has(input:disabled)': {
-    opacity: 0.5,
-    cursor: 'not-allowed',
-  },
-
   defaultVariants: {
     size: 'md',
   },
 })
 
-export const Prefix = styled('span', {
-  fontFamily: '$default',
-  fontSize: '$sm',
-  color: '$gray400',
-  fontWeight: 'regular',
-})
-
-export const Input = styled('input', {
-  fontFamily: '$default',
-  fontSize: '$sm',
-  color: '$white',
-  fontWeight: 'regular',
-  background: 'transparent',
-  border: 0,
-  width: '100%',
-
-  '&:focus': {
-    outline: 0,
-  },
-
-  '&:disabled': {
-    cursor: 'not-allowed',
-  },
-
-  '&::placeholder': {
-    color: '$gray500',
-  },
-})
+export type TextInputVariants = VariantProps<typeof textInputStyles>

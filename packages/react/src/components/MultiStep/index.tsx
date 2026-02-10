@@ -1,23 +1,39 @@
-import { Label, MultiStepContainer, Step, Steps } from './styles'
+import { CSSProperties } from 'react'
+import { multiStepStyles, stepStyles } from './styles'
 
 export interface MultiStepProps {
   size: number
   currentStep?: number
+  className?: string
 }
 
-export function MultiStep({ size, currentStep = 1 }: MultiStepProps) {
-  return (
-    <MultiStepContainer>
-      <Label>
-        Passo {currentStep} de {size}
-      </Label>
+export function MultiStep({
+  size,
+  currentStep = 1,
+  className,
+}: MultiStepProps) {
+  const { container, label, steps } = multiStepStyles()
 
-      <Steps css={{ '--steps-size': size }}>
+  return (
+    <div className={container({ className })}>
+      <span className={label()}>
+        Passo {currentStep} de {size}
+      </span>
+
+      <div
+        className={steps()}
+        style={{ '--steps-size': size } as CSSProperties}
+      >
         {Array.from({ length: size }, (_, i) => i + 1).map((step) => {
-          return <Step key={step} active={currentStep >= step} />
+          return (
+            <div
+              key={step}
+              className={stepStyles({ active: currentStep >= step })}
+            />
+          )
         })}
-      </Steps>
-    </MultiStepContainer>
+      </div>
+    </div>
   )
 }
 

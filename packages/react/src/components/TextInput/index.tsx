@@ -1,19 +1,21 @@
-import { ComponentProps, ElementRef, forwardRef } from 'react'
-import { Input, Prefix, TextInputContainer } from './styles'
+import { ComponentProps, forwardRef } from 'react'
+import { textInputStyles, type TextInputVariants } from './styles'
 
 export interface TextInputProps
-  extends Omit<ComponentProps<typeof Input>, 'size'> {
+  extends Omit<ComponentProps<'input'>, 'size'>,
+    TextInputVariants {
   prefix?: string
-  size?: ComponentProps<typeof TextInputContainer>['size']
 }
 
-export const TextInput = forwardRef<ElementRef<typeof Input>, TextInputProps>(
-  ({ prefix, size, ...props }, ref) => {
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ prefix, size, className, ...props }, ref) => {
+    const { container, prefix: prefixClass, input } = textInputStyles({ size })
+
     return (
-      <TextInputContainer size={size}>
-        {!!prefix && <Prefix>{prefix}</Prefix>}
-        <Input ref={ref} {...props} />
-      </TextInputContainer>
+      <div className={container({ className })}>
+        {!!prefix && <span className={prefixClass()}>{prefix}</span>}
+        <input ref={ref} className={input()} {...props} />
+      </div>
     )
   },
 )
