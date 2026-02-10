@@ -1,6 +1,6 @@
 # igortullio-ui
 
-A React Design System with tokens, components, and interactive Storybook documentation. Published on npm as [`@igortullio-ui/react`](https://www.npmjs.com/package/@igortullio-ui/react).
+A React Design System with components and interactive Storybook documentation. Published on npm as [`@igortullio-ui/react`](https://www.npmjs.com/package/@igortullio-ui/react).
 
 > Built as part of [Rocketseat Ignite](https://www.rocketseat.com.br/ignite) course.
 
@@ -12,7 +12,6 @@ A React Design System with tokens, components, and interactive Storybook documen
 
 | Package | Description |
 |---------|-------------|
-| `@igortullio-ui/tokens` | Design tokens (colors, fonts, spacing, etc.) |
 | `@igortullio-ui/react` | React components (Avatar, Box, Button, Checkbox, Heading, MultiStep, Text, TextArea, TextInput) |
 | `@igortullio-ui/eslint-config` | Shared ESLint configuration |
 | `@igortullio-ui/ts-config` | Shared TypeScript configuration |
@@ -22,7 +21,8 @@ A React Design System with tokens, components, and interactive Storybook documen
 
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Stitches](https://stitches.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Tailwind Variants](https://www.tailwind-variants.org/)
 - [Radix UI](https://www.radix-ui.com/)
 - [Storybook](https://storybook.js.org/)
 - [Changesets](https://github.com/changesets/changesets) for versioning
@@ -35,4 +35,31 @@ git clone https://github.com/igortullio/igortullio-ui.git
 cd igortullio-ui
 npm install
 npm run dev
+```
+
+## Usage
+
+Install the package:
+
+```bash
+npm install @igortullio-ui/react
+```
+
+Import styles and components:
+
+```tsx
+// Import the styles (required for components to work)
+import '@igortullio-ui/react/styles.css'
+
+// Import components
+import { Button, Text, Box } from '@igortullio-ui/react'
+
+function App() {
+  return (
+    <Box>
+      <Text>Hello World</Text>
+      <Button>Click me</Button>
+    </Box>
+  )
+}
 ```

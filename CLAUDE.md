@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-React Design System monorepo (`@igortullio-ui/*`) with design tokens, React components, and Storybook docs. Published to npm.
+React Design System monorepo (`@igortullio-ui/*`) with React components and Storybook docs. Published to npm as `@igortullio-ui/react`.
 
 ## Commands
 
@@ -19,6 +19,7 @@ npm run build        # Build all packages (turbo, respects dependency graph)
 npm run build        # Build single package
 npm run dev          # Watch mode build
 npm run lint         # ESLint with autofix (react package)
+npm run test         # Run tests (react package)
 ```
 
 **Release workflow:**
@@ -42,8 +43,7 @@ npm run deploy-storybook  # Deploy to GitHub Pages
 ### Package Dependency Graph
 
 ```
-docs → react → tokens
-              → ts-config
+docs → react → ts-config
               → eslint-config
 ```
 
@@ -51,25 +51,47 @@ docs → react → tokens
 
 | Package | Published | Purpose |
 |---------|-----------|---------|
-| `tokens` | Yes | Design tokens (colors, spacing, fonts, radii, etc.) as TS constants |
-| `react` | Yes | React component library (9 components) |
+| `react` | Yes | React component library (9 components) with Tailwind CSS v4 |
 | `eslint-config` | No | Shared ESLint config (extends `@rocketseat/eslint-config/react`) |
 | `ts-config` | No | Shared tsconfig (`base.json` and `react.json`) |
 | `docs` | No | Storybook documentation site |
 
 ### Styling Architecture
 
-- **Stitches** (`@stitches/react`) for CSS-in-JS — configured in `packages/react/src/styles/index.ts`
-- `createStitches()` maps all token packages into the Stitches theme
-- Custom `themeMap`: `height` and `width` resolve to `space` tokens
-- Components use Stitches `styled()` API with `variants` for component APIs
+- **Tailwind CSS v4** with CSS-first approach using `@theme inline` directive
+- Design tokens defined in `packages/react/src/styles/globals.css` as CSS custom properties
+- **Tailwind Variants** (`tailwind-variants`) for component variant definitions
+- Components use `tv()` API with variants for component APIs
 - **Radix UI** primitives for Avatar and Checkbox
+- Consumers must import `@igortullio-ui/react/styles.css` for styles to work
+
+### Design Tokens
+
+Design tokens are defined in CSS using Tailwind v4's `@theme inline` directive:
+
+```css
+@theme inline {
+  --color-ignite-500: #00875f;
+  --font-default: 'Roboto', sans-serif;
+  --radius-md: 8px;
+  --spacing-4: 1rem;
+}
+```
+
+Token categories:
+- Colors (gray scale, ignite brand)
+- Font families, sizes, weights
+- Line heights
+- Border radii
+- Spacing scale
 
 ### Build
 
-- **tsup** bundles `tokens` and `react` packages (ESM + CJS + `.d.ts`)
-- Turbo `build` pipeline has `dependsOn: ["^build"]` — tokens builds before react
-- Storybook uses Vite builder
+- **tsup** bundles `react` package (ESM + CJS + `.d.ts`)
+- **Tailwind CLI** compiles CSS from `globals.css` to `dist/styles.css`
+- Build script runs both: `build:js` (tsup) + `build:css` (Tailwind CLI)
+- Turbo `build` pipeline has `dependsOn: ["^build"]`
+- Storybook uses Vite builder with `@tailwindcss/vite`
 
 ### Releases
 
