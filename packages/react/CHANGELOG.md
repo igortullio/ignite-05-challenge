@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.0.2
+
+### Patch Changes
+
+- 975cc90: fix: add require shim for ESM output to resolve dynamic require errors in Vite/browser environments
+
 ## 4.0.0
 
 ### Major Changes
