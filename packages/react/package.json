@@ -65,7 +65,13 @@
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igortullio/igortullio-ui.git",
+    "directory": "packages/react"
+  },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
