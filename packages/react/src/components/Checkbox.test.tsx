@@ -19,8 +19,8 @@ describe('Checkbox Component', () => {
   it('should have checked state classes', () => {
     const { container } = checkboxStyles()
     const classes = container()
-    expect(classes).toContain('data-[state=checked]:bg-ignite-300')
-    expect(classes).toContain('data-[state=checked]:border-ignite-300')
+    expect(classes).toContain('data-[state=checked]:bg-primary-300')
+    expect(classes).toContain('data-[state=checked]:border-primary-300')
   })
 
   it('should generate indicator classes', () => {

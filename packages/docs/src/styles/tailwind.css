@@ -1,23 +1,14 @@
-/**
- * Storybook Tailwind CSS v4 Configuration
- *
- * This file configures Tailwind CSS for Storybook development.
- * It imports the base Tailwind framework and sets up source scanning
- * for component files in the @igortullio-ui/react package.
- *
- * The @tailwindcss/vite plugin processes this file during development
- * and build, enabling HMR for Tailwind utility classes.
- */
 @import "tailwindcss";
 
-/**
- * Source directive to scan component files for utility classes.
- * Points to the react package components directory.
- */
 @source "../../../../packages/react/src/components/**/*.tsx";
 
-/**
- * Import the design system tokens from the react package globals.css.
- * This includes all @theme inline definitions for colors, fonts, spacing, etc.
- */
 @import "../../../react/src/styles/globals.css" source(none);
+
+@layer base {
+  :root {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--color-gray-900);
+    color: var(--color-gray-100);
+    -webkit-font-smoothing: antialiased;
+  }
+}

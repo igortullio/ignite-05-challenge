@@ -2,13 +2,13 @@ import { ComponentProps, ElementType, forwardRef } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const textStyles = tv({
-  base: 'font-default leading-base m-0 text-gray-100',
+  base: 'leading-base m-0 text-gray-100',
   variants: {
     size: {
       xxs: 'text-xxs',
       xs: 'text-xs',
       sm: 'text-sm',
-      md: 'text-md',
+      md: 'text-base',
       lg: 'text-lg',
       xl: 'text-xl',
       '2xl': 'text-2xl',

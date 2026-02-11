@@ -15,7 +15,7 @@ describe('Button Component', () => {
 
   it('should apply default variant (primary)', () => {
     const classes = buttonStyles()
-    expect(classes).toContain('bg-ignite-500')
+    expect(classes).toContain('bg-primary-500')
     expect(classes).toContain('text-white')
   })
 
@@ -25,9 +25,9 @@ describe('Button Component', () => {
   })
 
   it('should apply variant prop correctly', () => {
-    expect(buttonStyles({ variant: 'primary' })).toContain('bg-ignite-500')
+    expect(buttonStyles({ variant: 'primary' })).toContain('bg-primary-500')
     expect(buttonStyles({ variant: 'secondary' })).toContain(
-      'border-ignite-500',
+      'border-primary-500',
     )
     expect(buttonStyles({ variant: 'tertiary' })).toContain('bg-transparent')
   })

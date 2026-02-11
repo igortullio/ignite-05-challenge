@@ -6,7 +6,7 @@ export const textInputStyles = tv({
     container: [
       'bg-gray-900 rounded-sm box-border border-2 border-gray-900',
       'flex items-center',
-      'has-[input:focus]:border-ignite-300',
+      'has-[input:focus]:border-primary-300',
       'has-[input:disabled]:opacity-50 has-[input:disabled]:cursor-not-allowed',
     ],
     prefix: 'text-sm text-gray-400',

@@ -51,7 +51,7 @@ describe('TextInput Component', () => {
   it('should have focus state on container', () => {
     const { container } = textInputStyles()
     const classes = container()
-    expect(classes).toContain('has-[input:focus]:border-ignite-300')
+    expect(classes).toContain('has-[input:focus]:border-primary-300')
   })
 
   it('should have disabled state on container', () => {

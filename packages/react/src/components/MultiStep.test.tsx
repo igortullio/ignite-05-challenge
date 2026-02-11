@@ -13,7 +13,6 @@ describe('MultiStep Component', () => {
   it('should generate label classes', () => {
     const { label } = multiStepStyles()
     const classes = label()
-    expect(classes).toContain('font-default')
     expect(classes).toContain('text-gray-200')
     expect(classes).toContain('text-xs')
   })

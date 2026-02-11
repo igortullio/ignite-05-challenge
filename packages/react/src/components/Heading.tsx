@@ -2,7 +2,7 @@ import { ComponentProps, ElementType, forwardRef } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 export const headingStyles = tv({
-  base: 'font-default leading-shorter m-0 text-gray-100',
+  base: 'leading-shorter m-0 text-gray-100',
   variants: {
     size: {
       sm: 'text-xl',

@@ -4,14 +4,13 @@ import { textStyles } from './Text'
 describe('Text Component', () => {
   it('should generate base classes', () => {
     const classes = textStyles()
-    expect(classes).toContain('font-default')
     expect(classes).toContain('leading-base')
     expect(classes).toContain('text-gray-100')
   })
 
   it('should apply default size variant (md)', () => {
     const classes = textStyles()
-    expect(classes).toContain('text-md')
+    expect(classes).toContain('text-base')
   })
 
   it('should apply size variants correctly', () => {

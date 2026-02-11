@@ -16,7 +16,7 @@ describe('TextArea Component', () => {
   it('should have focus state classes', () => {
     const classes = textAreaStyles()
     expect(classes).toContain('focus:outline-none')
-    expect(classes).toContain('focus:border-ignite-300')
+    expect(classes).toContain('focus:border-primary-300')
   })
 
   it('should have disabled state classes', () => {

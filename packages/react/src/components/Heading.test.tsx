@@ -4,7 +4,6 @@ import { headingStyles } from './Heading'
 describe('Heading Component', () => {
   it('should generate base classes', () => {
     const classes = headingStyles()
-    expect(classes).toContain('font-default')
     expect(classes).toContain('leading-shorter')
     expect(classes).toContain('text-gray-100')
   })

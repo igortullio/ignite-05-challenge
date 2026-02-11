@@ -3,7 +3,7 @@ import { tv, type VariantProps } from 'tailwind-variants'
 
 export const buttonStyles = tv({
   base: [
-    'rounded-sm text-sm font-medium font-default text-center min-w-[120px] box-border px-4',
+    'rounded-sm text-sm font-medium text-center min-w-[120px] box-border px-4',
     'flex items-center justify-center gap-2 cursor-pointer',
     '[&_svg]:w-4 [&_svg]:h-4',
     'disabled:cursor-not-allowed',
@@ -12,13 +12,13 @@ export const buttonStyles = tv({
   variants: {
     variant: {
       primary: [
-        'text-white bg-ignite-500',
-        'enabled:hover:bg-ignite-300',
+        'text-white bg-primary-500',
+        'enabled:hover:bg-primary-300',
         'disabled:bg-gray-200',
       ],
       secondary: [
-        'text-ignite-300 bg-transparent border-2 border-ignite-500',
-        'enabled:hover:bg-ignite-500 enabled:hover:text-white',
+        'text-primary-300 bg-transparent border-2 border-primary-500',
+        'enabled:hover:bg-primary-500 enabled:hover:text-white',
         'disabled:text-gray-200 disabled:border-gray-200',
       ],
       tertiary: [
