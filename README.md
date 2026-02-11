@@ -1,26 +1,14 @@
 # igortullio-ui
 
-A React Design System with 9 accessible components and interactive Storybook documentation. Published on npm as [`@igortullio-ui/react`](https://www.npmjs.com/package/@igortullio-ui/react).
-
-## Demo
-
-[Storybook](https://igortullio.github.io/igortullio-ui/)
-
-## Packages
-
-| Package | Description |
-|---------|-------------|
-| `@igortullio-ui/react` | React components (Avatar, Box, Button, Checkbox, Heading, MultiStep, Text, TextArea, TextInput) |
-| `docs` | Storybook documentation |
+A React Design System built on **shadcn/ui** components with custom design tokens. Published on npm as [`@igortullio-ui/react`](https://www.npmjs.com/package/@igortullio-ui/react).
 
 ## Tech Stack
 
 - [React 18+](https://react.dev/) - UI library
 - [TypeScript 5+](https://www.typescriptlang.org/) - Type safety
 - [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS with CSS-first configuration
-- [Tailwind Variants](https://www.tailwind-variants.org/) - Variant API for component styling
-- [Radix UI](https://www.radix-ui.com/) - Accessible primitives (Avatar, Checkbox)
-- [Storybook 8](https://storybook.js.org/) - Component documentation
+- [shadcn/ui](https://ui.shadcn.com/) - Component primitives
+- [Radix UI](https://www.radix-ui.com/) - Accessible primitives
 - [Changesets](https://github.com/changesets/changesets) - Versioning and publishing
 - [tsup](https://tsup.egoist.dev/) - TypeScript bundler
 - [Turborepo](https://turbo.build/) - Monorepo build system
@@ -41,9 +29,8 @@ npm run dev
 ```bash
 npm run dev          # Start all packages in dev mode
 npm run build        # Build all packages
-npm run lint         # Run ESLint
+npm run lint         # Run linting
 npm run test         # Run tests
-npm run storybook    # Start Storybook dev server (from packages/docs)
 ```
 
 ## Installation

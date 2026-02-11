@@ -33,10 +33,6 @@ packages/
 │   │   ├── styles/       # Global CSS with design tokens
 │   │   └── index.ts      # Public exports
 │   └── package.json
-├── docs/           # Storybook documentation
-│   ├── .storybook/       # Storybook config
-│   └── src/stories/      # Component stories
-└── docs/           # Storybook documentation
 ```
 
 ## Development Workflow
@@ -53,10 +49,6 @@ npm run lint         # Lint all packages
 cd packages/react
 npm run test         # Run tests
 npm run lint         # Run linting
-
-cd packages/docs
-npm run dev          # Start Storybook
-npm run build        # Build Storybook
 ```
 
 ### Making Changes
@@ -304,42 +296,6 @@ components/
 ├── Button.test.tsx
 ```
 
-## Documentation
-
-### Storybook
-
-Each component should have a story in `packages/docs/src/stories/`:
-
-```typescript
-import type { Meta, StoryObj } from '@storybook/react'
-import { Button, ButtonProps } from '@igortullio-ui/react'
-
-export default {
-  title: 'Form/Button',
-  component: Button,
-  argTypes: {
-    variant: {
-      options: ['primary', 'secondary', 'tertiary'],
-      control: { type: 'inline-radio' },
-    },
-  },
-} as Meta<ButtonProps>
-
-export const Primary: StoryObj<ButtonProps> = {
-  args: {
-    children: 'Click me',
-    variant: 'primary',
-  },
-}
-```
-
-### Running Storybook
-
-```bash
-cd packages/docs
-npm run dev
-```
-
 ## Release Process
 
 This project uses [Changesets](https://github.com/changesets/changesets) for versioning.
@@ -370,11 +326,9 @@ Pull requests should:
 
 - [ ] Follow the styling guidelines above
 - [ ] Include tests for new functionality
-- [ ] Update Storybook documentation
 - [ ] Include a changeset
 - [ ] Pass all CI checks (lint, test, build)
 
 ## Questions?
 
 - Open an [issue](https://github.com/igortullio/igortullio-ui/issues)
-- Check existing documentation in [Storybook](https://igortullio.github.io/igortullio-ui/)

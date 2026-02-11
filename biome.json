@@ -35,6 +35,6 @@
     }
   },
   "files": {
-    "includes": ["**", "!**/dist", "!**/node_modules", "!**/.turbo", "!**/storybook-static"]
+    "includes": ["**", "!**/dist", "!**/node_modules", "!**/.turbo"]
   }
 }

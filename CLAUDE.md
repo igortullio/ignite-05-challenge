@@ -20,7 +20,7 @@ npm run check        # Check all files with Biome (lint + format, no write)
 ```bash
 npm run build        # Build single package
 npm run dev          # Watch mode build
-npm run lint         # Biome check with autofix (react & docs packages)
+npm run lint         # Biome check with autofix
 npm run test         # Run tests (react package)
 ```
 
@@ -28,14 +28,7 @@ npm run test         # Run tests (react package)
 ```bash
 npm run changeset          # Create a changeset for versioning
 npm run version-packages   # Apply changesets to bump versions
-npm run release            # Build (excluding docs) + publish to npm
-```
-
-**Storybook** (from `packages/docs`):
-```bash
-npm run dev                # Start Storybook dev server
-npm run build             # Build static Storybook
-npm run deploy-storybook  # Deploy to GitHub Pages
+npm run release            # Build + publish to npm
 ```
 
 **Adding new shadcn components** (from `packages/react`):
@@ -48,18 +41,11 @@ After adding, fix `@/` path aliases to relative imports and run `npm run lint` t
 
 **Monorepo**: Turborepo + npm workspaces. All packages live in `packages/`.
 
-### Package Dependency Graph
-
-```
-docs → react
-```
-
 ### Packages
 
 | Package | Published | Purpose |
 |---------|-----------|---------|
 | `react` | Yes | shadcn/ui component library (23 components) with Tailwind CSS v4 |
-| `docs` | No | Storybook documentation site |
 
 ### Components (shadcn/ui)
 
@@ -114,12 +100,10 @@ Token categories: colors (semantic), font families, border radii, sidebar tokens
 - **Tailwind CLI** compiles CSS from `index.css` to `dist/styles.css`
 - Build script runs both: `build:js` (tsup) + `build:css` (Tailwind CLI)
 - Turbo `build` pipeline has `dependsOn: ["^build"]`
-- Storybook uses Vite builder with `@tailwindcss/vite`
 - **Important**: shadcn CLI generates `@/` path aliases — these must be replaced with relative imports for tsup to resolve them
 
 ### Releases
 
 - **Changesets** handles versioning and npm publishing
-- `docs` package is excluded from changesets/publishing
 - Internal dependency updates use `patch` strategy
 - Commits are auto-created on version bumps
