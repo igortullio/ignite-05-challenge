@@ -1,8 +1,8 @@
-import { ComponentProps, ElementType, forwardRef } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { type ComponentProps, type ElementType, forwardRef } from 'react'
+import { cn } from '../lib/utils'
 
-export const headingStyles = tv({
-  base: 'leading-shorter m-0 text-gray-100',
+export const headingVariants = cva('leading-shorter m-0 text-gray-100', {
   variants: {
     size: {
       sm: 'text-xl',
@@ -20,7 +20,7 @@ export const headingStyles = tv({
   },
 })
 
-export type HeadingVariants = VariantProps<typeof headingStyles>
+export type HeadingVariants = VariantProps<typeof headingVariants>
 
 export interface HeadingProps extends ComponentProps<'h2'>, HeadingVariants {
   as?: ElementType
@@ -28,13 +28,7 @@ export interface HeadingProps extends ComponentProps<'h2'>, HeadingVariants {
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ as: Component = 'h2', size, className, ...props }, ref) => {
-    return (
-      <Component
-        ref={ref}
-        className={headingStyles({ size, className })}
-        {...props}
-      />
-    )
+    return <Component ref={ref} className={cn(headingVariants({ size, className }))} {...props} />
   },
 )
 

@@ -1,22 +1,14 @@
-import { ComponentProps, ElementType, forwardRef } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { type ComponentProps, type ElementType, forwardRef } from 'react'
+import { cn } from '../lib/utils'
 
-export const boxStyles = tv({
-  base: 'p-6 rounded-md bg-gray-800 border border-gray-600',
-})
-
-export type BoxVariants = VariantProps<typeof boxStyles>
-
-export interface BoxProps extends ComponentProps<'div'>, BoxVariants {
+export interface BoxProps extends ComponentProps<'div'> {
   as?: ElementType
 }
 
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
-  ({ as: Component = 'div', className, ...props }, ref) => {
-    return (
-      <Component ref={ref} className={boxStyles({ className })} {...props} />
-    )
-  },
-)
+export const Box = forwardRef<HTMLDivElement, BoxProps>(({ as: Component = 'div', className, ...props }, ref) => {
+  return (
+    <Component ref={ref} className={cn('p-6 rounded-md bg-gray-800 border border-gray-600', className)} {...props} />
+  )
+})
 
 Box.displayName = 'Box'

@@ -1,54 +1,35 @@
-import { describe, it, expect } from 'vitest'
-import { multiStepStyles, stepStyles } from './MultiStep'
+import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+import { MultiStep } from './MultiStep'
 
 describe('MultiStep Component', () => {
-  it('should have callable container slot', () => {
-    const { container } = multiStepStyles()
-    // Container is an empty slot by design
-    expect(typeof container).toBe('function')
-    // Empty slots return undefined in tailwind-variants
-    expect(container()).toBeUndefined()
+  it('should render the correct label', () => {
+    render(<MultiStep size={4} currentStep={2} />)
+    expect(screen.getByText('Passo 2 de 4')).toBeInTheDocument()
   })
 
-  it('should generate label classes', () => {
-    const { label } = multiStepStyles()
-    const classes = label()
-    expect(classes).toContain('text-gray-200')
-    expect(classes).toContain('text-xs')
+  it('should render the correct number of steps', () => {
+    const { container } = render(<MultiStep size={4} />)
+    const steps = container.querySelectorAll('.h-1')
+    expect(steps).toHaveLength(4)
   })
 
-  it('should generate steps container classes', () => {
-    const { steps } = multiStepStyles()
-    const classes = steps()
-    expect(classes).toContain('grid')
-    expect(classes).toContain('grid-cols-steps')
-    expect(classes).toContain('gap-2')
-    expect(classes).toContain('mt-1')
+  it('should apply active class to completed steps', () => {
+    const { container } = render(<MultiStep size={4} currentStep={2} />)
+    const steps = container.querySelectorAll('.h-1')
+    expect(steps[0].className).toContain('bg-gray-100')
+    expect(steps[1].className).toContain('bg-gray-100')
+    expect(steps[2].className).not.toContain('bg-gray-100')
+    expect(steps[3].className).not.toContain('bg-gray-100')
   })
 
-  it('should generate step base classes', () => {
-    const classes = stepStyles()
-    expect(classes).toContain('h-1')
-    expect(classes).toContain('rounded-px')
-    expect(classes).toContain('bg-gray-600')
+  it('should default currentStep to 1', () => {
+    render(<MultiStep size={3} />)
+    expect(screen.getByText('Passo 1 de 3')).toBeInTheDocument()
   })
 
-  it('should apply active variant correctly', () => {
-    const inactive = stepStyles({ active: false })
-    expect(inactive).toContain('bg-gray-600')
-    expect(inactive).not.toContain('bg-gray-100')
-
-    const active = stepStyles({ active: true })
-    expect(active).toContain('bg-gray-100')
-  })
-
-  it('should merge custom className', () => {
-    const multiStep = multiStepStyles()
-    expect(multiStep.container({ className: 'custom' })).toContain('custom')
-  })
-
-  it('should export variant types correctly', () => {
-    expect(typeof multiStepStyles).toBe('function')
-    expect(typeof stepStyles).toBe('function')
+  it('should apply custom className', () => {
+    const { container } = render(<MultiStep size={2} className="custom" />)
+    expect(container.firstElementChild?.className).toContain('custom')
   })
 })

@@ -1,22 +1,32 @@
-import { describe, it, expect } from 'vitest'
-import { boxStyles } from './Box'
+import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+import { Box } from './Box'
 
 describe('Box Component', () => {
-  it('should generate base classes', () => {
-    const classes = boxStyles()
-    expect(classes).toContain('p-6')
-    expect(classes).toContain('rounded-md')
-    expect(classes).toContain('bg-gray-800')
-    expect(classes).toContain('border')
-    expect(classes).toContain('border-gray-600')
+  it('should render with base classes', () => {
+    render(<Box data-testid="box" />)
+    const box = screen.getByTestId('box')
+    expect(box.className).toContain('p-6')
+    expect(box.className).toContain('rounded-md')
+    expect(box.className).toContain('bg-gray-800')
+    expect(box.className).toContain('border')
+    expect(box.className).toContain('border-gray-600')
   })
 
   it('should merge custom className', () => {
-    const classes = boxStyles({ className: 'custom-class' })
-    expect(classes).toContain('custom-class')
+    render(<Box data-testid="box" className="custom-class" />)
+    const box = screen.getByTestId('box')
+    expect(box.className).toContain('custom-class')
   })
 
-  it('should export variant types correctly', () => {
-    expect(typeof boxStyles).toBe('function')
+  it('should render as a different element with as prop', () => {
+    render(<Box as="section" data-testid="box" />)
+    const box = screen.getByTestId('box')
+    expect(box.tagName).toBe('SECTION')
+  })
+
+  it('should render children', () => {
+    render(<Box>Hello</Box>)
+    expect(screen.getByText('Hello')).toBeInTheDocument()
   })
 })

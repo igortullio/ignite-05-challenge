@@ -1,49 +1,34 @@
-import { describe, it, expect } from 'vitest'
-import { checkboxStyles } from './Checkbox'
+import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+import { Checkbox } from './Checkbox'
 
 describe('Checkbox Component', () => {
-  it('should generate container classes', () => {
-    const { container } = checkboxStyles()
-    const classes = container()
-    expect(classes).toContain('w-6')
-    expect(classes).toContain('h-6')
-    expect(classes).toContain('bg-gray-900')
-    expect(classes).toContain('rounded-xs')
-    expect(classes).toContain('cursor-pointer')
-    expect(classes).toContain('flex')
-    expect(classes).toContain('justify-center')
-    expect(classes).toContain('items-center')
-    expect(classes).toContain('border-2')
+  it('should render a checkbox', () => {
+    render(<Checkbox aria-label="Accept" />)
+    expect(screen.getByRole('checkbox')).toBeInTheDocument()
+  })
+
+  it('should render with base classes', () => {
+    render(<Checkbox aria-label="Accept" />)
+    const checkbox = screen.getByRole('checkbox')
+    expect(checkbox.className).toContain('w-6')
+    expect(checkbox.className).toContain('h-6')
+    expect(checkbox.className).toContain('bg-gray-900')
+    expect(checkbox.className).toContain('rounded-xs')
+    expect(checkbox.className).toContain('cursor-pointer')
+    expect(checkbox.className).toContain('border-2')
   })
 
   it('should have checked state classes', () => {
-    const { container } = checkboxStyles()
-    const classes = container()
-    expect(classes).toContain('data-[state=checked]:bg-primary-300')
-    expect(classes).toContain('data-[state=checked]:border-primary-300')
-  })
-
-  it('should generate indicator classes', () => {
-    const { indicator } = checkboxStyles()
-    const classes = indicator()
-    expect(classes).toContain('text-white')
-    expect(classes).toContain('w-4')
-    expect(classes).toContain('h-4')
-  })
-
-  it('should have animation classes', () => {
-    const { indicator } = checkboxStyles()
-    const classes = indicator()
-    expect(classes).toContain('data-[state=checked]:animate-slide-in')
-    expect(classes).toContain('data-[state=unchecked]:animate-slide-out')
+    render(<Checkbox aria-label="Accept" />)
+    const checkbox = screen.getByRole('checkbox')
+    expect(checkbox.className).toContain('data-[state=checked]:bg-primary-300')
+    expect(checkbox.className).toContain('data-[state=checked]:border-primary-300')
   })
 
   it('should merge custom className', () => {
-    const checkbox = checkboxStyles()
-    expect(checkbox.container({ className: 'custom' })).toContain('custom')
-  })
-
-  it('should export variant types correctly', () => {
-    expect(typeof checkboxStyles).toBe('function')
+    render(<Checkbox aria-label="Accept" className="custom" />)
+    const checkbox = screen.getByRole('checkbox')
+    expect(checkbox.className).toContain('custom')
   })
 })

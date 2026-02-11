@@ -1,9 +1,3 @@
-/**
- * Vitest configuration for @igortullio-ui/react
- *
- * Configured for testing React components and Tailwind CSS setup verification.
- * Note: Tailwind CSS plugin is not needed for configuration tests.
- */
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({

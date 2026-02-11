@@ -1,8 +1,8 @@
-import { ComponentProps, ElementType, forwardRef } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { type ComponentProps, type ElementType, forwardRef } from 'react'
+import { cn } from '../lib/utils'
 
-export const textStyles = tv({
-  base: 'leading-base m-0 text-gray-100',
+export const textVariants = cva('leading-base m-0 text-gray-100', {
   variants: {
     size: {
       xxs: 'text-xxs',
@@ -25,7 +25,7 @@ export const textStyles = tv({
   },
 })
 
-export type TextVariants = VariantProps<typeof textStyles>
+export type TextVariants = VariantProps<typeof textVariants>
 
 export interface TextProps extends ComponentProps<'p'>, TextVariants {
   as?: ElementType
@@ -33,13 +33,7 @@ export interface TextProps extends ComponentProps<'p'>, TextVariants {
 
 export const Text = forwardRef<HTMLParagraphElement, TextProps>(
   ({ as: Component = 'p', size, className, ...props }, ref) => {
-    return (
-      <Component
-        ref={ref}
-        className={textStyles({ size, className })}
-        {...props}
-      />
-    )
+    return <Component ref={ref} className={cn(textVariants({ size, className }))} {...props} />
   },
 )
 

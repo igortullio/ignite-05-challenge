@@ -1,25 +1,5 @@
-import { CSSProperties } from 'react'
-import { tv, type VariantProps } from 'tailwind-variants'
-
-export const multiStepStyles = tv({
-  slots: {
-    container: '',
-    label: 'leading-base m-0 text-gray-200 text-xs',
-    steps: 'grid grid-cols-steps gap-2 mt-1',
-    step: 'h-1 rounded-px bg-gray-600',
-  },
-})
-
-export const stepStyles = tv({
-  base: 'h-1 rounded-px bg-gray-600',
-  variants: {
-    active: {
-      true: 'bg-gray-100',
-    },
-  },
-})
-
-export type StepVariants = VariantProps<typeof stepStyles>
+import type { CSSProperties } from 'react'
+import { cn } from '../lib/utils'
 
 export interface MultiStepProps {
   size: number
@@ -27,30 +7,16 @@ export interface MultiStepProps {
   className?: string
 }
 
-export function MultiStep({
-  size,
-  currentStep = 1,
-  className,
-}: MultiStepProps) {
-  const { container, label, steps } = multiStepStyles()
-
+export function MultiStep({ size, currentStep = 1, className }: MultiStepProps) {
   return (
-    <div className={container({ className })}>
-      <span className={label()}>
+    <div className={cn(className)}>
+      <span className="leading-base m-0 text-gray-200 text-xs">
         Passo {currentStep} de {size}
       </span>
 
-      <div
-        className={steps()}
-        style={{ '--steps-size': size } as CSSProperties}
-      >
+      <div className="grid grid-cols-steps gap-2 mt-1" style={{ '--steps-size': size } as CSSProperties}>
         {Array.from({ length: size }, (_, i) => i + 1).map((step) => {
-          return (
-            <div
-              key={step}
-              className={stepStyles({ active: currentStep >= step })}
-            />
-          )
+          return <div key={step} className={cn('h-1 rounded-px bg-gray-600', currentStep >= step && 'bg-gray-100')} />
         })}
       </div>
     </div>

@@ -1,14 +1,13 @@
-/**
- * Vite configuration for @igortullio-ui/react
- *
- * Uses @tailwindcss/vite plugin for Tailwind CSS v4 integration.
- * This enables CSS-first configuration and automatic class detection.
- *
- * @see https://tailwindcss.com/docs/installation/using-vite
- */
-import { defineConfig } from 'vite'
+import path from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [tailwindcss()],
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
 })
