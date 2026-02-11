@@ -1,6 +1,9 @@
 {
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.biome": "explicit"
   },
-  "editor.formatOnSave": true // Tell VSCode to format files on save
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [["tv\\(([^)]*?)\\)", "[\"'`]([^\"'`]*)[\"'`]"]]
 }

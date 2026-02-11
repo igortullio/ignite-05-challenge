@@ -6,23 +6,12 @@
       "persistent": true
     },
     "build": {
-      "outputs": [
-        "dist/**",
-        "storybook-static/**"
-      ],
-      "dependsOn": [
-        "^build"
-      ]
+      "outputs": ["dist/**", "storybook-static/**"],
+      "dependsOn": ["^build"]
     },
-    "lint": {
-      "dependsOn": [
-        "^build"
-      ]
-    },
+    "lint": {},
     "test": {
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build"]
     }
   }
 }
