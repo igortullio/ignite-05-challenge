@@ -12,10 +12,10 @@ import { textStyles } from '../components/Text'
 import { headingStyles } from '../components/Heading'
 import { buttonStyles } from '../components/Button'
 import { textAreaStyles } from '../components/TextArea'
-import { avatarStyles } from '../components/Avatar/styles'
-import { checkboxStyles } from '../components/Checkbox/styles'
-import { textInputStyles } from '../components/TextInput/styles'
-import { multiStepStyles, stepStyles } from '../components/MultiStep/styles'
+import { avatarStyles } from '../components/Avatar'
+import { checkboxStyles } from '../components/Checkbox'
+import { textInputStyles } from '../components/TextInput'
+import { multiStepStyles, stepStyles } from '../components/MultiStep'
 
 describe('Box Component', () => {
   it('should generate base classes', () => {
