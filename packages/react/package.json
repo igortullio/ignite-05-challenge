@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@base-ui/react": "^1.1.0",
+    "@fontsource-variable/roboto": "^5.2.9",
     "@tailwindcss/cli": "^4.1.18",
     "@tailwindcss/vite": "^4.1.18",
     "@testing-library/jest-dom": "^6.9.1",
