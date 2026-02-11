@@ -36,8 +36,7 @@ packages/
 ├── docs/           # Storybook documentation
 │   ├── .storybook/       # Storybook config
 │   └── src/stories/      # Component stories
-├── eslint-config/  # Shared ESLint configuration
-└── ts-config/      # Shared TypeScript configuration
+└── docs/           # Storybook documentation
 ```
 
 ## Development Workflow

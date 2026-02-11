@@ -12,13 +12,15 @@ React Design System monorepo (`@igortullio-ui/*`) with React components and Stor
 npm install          # Install all workspace dependencies
 npm run dev          # Dev mode for all packages (turbo, parallel)
 npm run build        # Build all packages (turbo, respects dependency graph)
+npm run format       # Format all files with Biome
+npm run check        # Check all files with Biome (lint + format, no write)
 ```
 
 **Per-package commands** (run from package directory):
 ```bash
 npm run build        # Build single package
 npm run dev          # Watch mode build
-npm run lint         # ESLint with autofix (react package)
+npm run lint         # Biome check with autofix (react & docs packages)
 npm run test         # Run tests (react package)
 ```
 
@@ -43,8 +45,7 @@ npm run deploy-storybook  # Deploy to GitHub Pages
 ### Package Dependency Graph
 
 ```
-docs → react → ts-config
-              → eslint-config
+docs → react
 ```
 
 ### Packages
@@ -52,17 +53,25 @@ docs → react → ts-config
 | Package | Published | Purpose |
 |---------|-----------|---------|
 | `react` | Yes | React component library (9 components) with Tailwind CSS v4 |
-| `eslint-config` | No | Shared ESLint config (extends `@rocketseat/eslint-config/react`) |
-| `ts-config` | No | Shared tsconfig (`base.json` and `react.json`) |
 | `docs` | No | Storybook documentation site |
+
+### Linting & Formatting
+
+- **Biome** (`@biomejs/biome`) handles linting, formatting, and import sorting from the root `biome.json`
+- Config: single quotes, no semicolons, trailing commas, 2-space indent, 80 chars
+- Lint rules: recommended + React hooks, a11y, unused vars/imports
+- `npm run lint` runs `biome check --write ./src` per package via Turbo
+- `npm run format` / `npm run check` at root for the whole repo
 
 ### Styling Architecture
 
 - **Tailwind CSS v4** with CSS-first approach using `@theme inline` directive
 - Design tokens defined in `packages/react/src/styles/globals.css` as CSS custom properties
-- **Tailwind Variants** (`tailwind-variants`) for component variant definitions
-- Components use `tv()` API with variants for component APIs
-- **Radix UI** primitives for Avatar and Checkbox
+- **`cn()`** utility (`clsx` + `tailwind-merge`) for class merging
+- **`cva()`** (`class-variance-authority`) for component variant definitions
+- Components follow **shadcn/ui patterns**: `cn()` for simple components, `cva()` for components with variants
+- **Radix UI** (`radix-ui` unified package) primitives for Avatar and Checkbox
+- **Lucide React** for icons
 - Consumers must import `@igortullio-ui/react/styles.css` for styles to work
 
 ### Design Tokens

@@ -2,8 +2,6 @@
 
 A React Design System with 9 accessible components and interactive Storybook documentation. Published on npm as [`@igortullio-ui/react`](https://www.npmjs.com/package/@igortullio-ui/react).
 
-> Built as part of [Rocketseat Ignite](https://www.rocketseat.com.br/ignite) course.
-
 ## Demo
 
 [Storybook](https://igortullio.github.io/igortullio-ui/)
@@ -13,8 +11,6 @@ A React Design System with 9 accessible components and interactive Storybook doc
 | Package | Description |
 |---------|-------------|
 | `@igortullio-ui/react` | React components (Avatar, Box, Button, Checkbox, Heading, MultiStep, Text, TextArea, TextInput) |
-| `@igortullio-ui/eslint-config` | Shared ESLint configuration |
-| `@igortullio-ui/ts-config` | Shared TypeScript configuration |
 | `docs` | Storybook documentation |
 
 ## Tech Stack
