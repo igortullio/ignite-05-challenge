@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.0.3
+
+### Patch Changes
+
+- 9a4d597: ci: test trusted publishers with OIDC provenance
+
 ## 3.0.2
 
 ### Patch Changes
