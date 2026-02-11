@@ -1,5 +1,5 @@
+import { Box, MultiStep, type MultiStepProps } from '@igortullio-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, MultiStep, MultiStepProps } from '@igortullio-ui/react'
 
 export default {
   title: 'Form/Multi Step',
@@ -11,10 +11,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Box
-          as="label"
-          className="flex flex-col gap-2"
-        >
+        <Box as="label" className="flex flex-col gap-2">
           {Story()}
         </Box>
       )

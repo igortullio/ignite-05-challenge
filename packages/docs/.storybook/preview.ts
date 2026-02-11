@@ -11,7 +11,7 @@
  * @see https://www.chromatic.com/docs/modes/
  */
 import type { Preview } from '@storybook/react-vite'
-import { themes } from '@storybook/theming'
+import { themes } from 'storybook/theming'
 import { allModes } from './modes'
 import '../src/styles/tailwind.css'
 
@@ -39,8 +39,8 @@ const preview: Preview = {
       diffThreshold: 0.063,
       // Enable modes for responsive visual testing
       modes: {
-        mobile: allModes['mobile'],
-        desktop: allModes['desktop'],
+        mobile: allModes.mobile,
+        desktop: allModes.desktop,
       },
     },
   },

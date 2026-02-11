@@ -1,5 +1,5 @@
+import { Box, Text, TextArea, type TextAreaProps } from '@igortullio-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Text, TextArea, TextAreaProps } from '@igortullio-ui/react'
 
 export default {
   title: 'Form/Text Area',
@@ -8,10 +8,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Box
-          as="label"
-          className="flex flex-col gap-2"
-        >
+        <Box as="label" className="flex flex-col gap-2">
           <Text size="sm">Observations</Text>
           {Story()}
         </Box>

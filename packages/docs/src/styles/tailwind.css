@@ -1,8 +1,7 @@
 @import "tailwindcss";
+@import "../../../react/src/index.css" source(none);
 
 @source "../../../../packages/react/src/components/**/*.tsx";
-
-@import "../../../react/src/styles/globals.css" source(none);
 
 @layer base {
   :root {

@@ -1,5 +1,5 @@
+import { Heading, type HeadingProps } from '@igortullio-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Heading, HeadingProps } from '@igortullio-ui/react'
 
 export default {
   title: 'Typography/Heading',
@@ -18,8 +18,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        story:
-          'Por padrão o heading sempre será um `h2`, mas podemos alterar isso com a propriedade `as`.',
+        story: 'Por padrão o heading sempre será um `h2`, mas podemos alterar isso com a propriedade `as`.',
       },
     },
   },

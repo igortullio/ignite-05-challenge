@@ -1,5 +1,5 @@
+import { Box, Checkbox, type CheckboxProps, Text } from '@igortullio-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Text, Checkbox, CheckboxProps } from '@igortullio-ui/react'
 
 export default {
   title: 'Form/Checkbox',
@@ -8,10 +8,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Box
-          as="label"
-          className="flex flex-row gap-2"
-        >
+        <Box as="label" className="flex flex-row gap-2">
           {Story()}
           <Text size="sm">Accept terms of use</Text>
         </Box>

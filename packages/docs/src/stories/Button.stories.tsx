@@ -1,6 +1,6 @@
+import { Button, type ButtonProps } from '@igortullio-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button, ButtonProps } from '@igortullio-ui/react'
-import { ArrowRight } from 'phosphor-react'
+import { ArrowRight } from 'lucide-react'
 
 export default {
   title: 'Form/Button',
@@ -62,7 +62,7 @@ export const WithIcon: StoryObj<ButtonProps> = {
     children: (
       <>
         Próximo passo
-        <ArrowRight weight="bold" />
+        <ArrowRight />
       </>
     ),
   },

@@ -1,5 +1,5 @@
+import { Box, Text, TextInput, type TextInputProps } from '@igortullio-ui/react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Box, Text, TextInput, TextInputProps } from '@igortullio-ui/react'
 
 export default {
   title: 'Form/Text Input',
@@ -8,10 +8,7 @@ export default {
   decorators: [
     (Story) => {
       return (
-        <Box
-          as="label"
-          className="flex flex-col gap-2"
-        >
+        <Box as="label" className="flex flex-col gap-2">
           <Text size="sm">Email address</Text>
           {Story()}
         </Box>
