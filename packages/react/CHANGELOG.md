@@ -1,5 +1,12 @@
 # @igortullio-ui/react
 
+## 3.2.0
+
+### Minor Changes
+
+- 289ac7e: add Storybook documentation package with CI tests
+- b36fb0c: add Storybook stories and improve design tokens
+
 ## 3.1.0
 
 ### Minor Changes
