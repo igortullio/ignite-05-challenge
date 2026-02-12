@@ -1,5 +1,12 @@
 # @igortullio-ui/react
 
+## 3.2.1
+
+### Patch Changes
+
+- 6f06af8: skip auto changeset when PR is already merged
+- 8fb1870: remove duplicate git tag step from release workflow
+
 ## 3.2.0
 
 ### Minor Changes
