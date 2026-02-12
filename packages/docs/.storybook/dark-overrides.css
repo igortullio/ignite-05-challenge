@@ -1,0 +1,6 @@
+/* Override Storybook's hardcoded white background on story preview containers
+   so components render in the correct dark mode context. */
+
+.dark .sbdocs-preview {
+  background-color: var(--background) !important;
+}
