@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.2.2
+
+### Patch Changes
+
+- f7e32e9: add style export condition for source.css
+
 ## 3.2.1
 
 ### Patch Changes
