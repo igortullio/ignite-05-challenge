@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.1.0
+
+### Minor Changes
+
+- 287c64a: add auto changeset generation from PR titles
+
 ## 3.0.3
 
 ### Patch Changes
