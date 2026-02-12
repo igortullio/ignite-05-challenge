@@ -14,13 +14,26 @@ jobs:
       contents: write
       pull-requests: read
     steps:
+      - name: Check PR is still open
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          STATE=$(gh pr view ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --json state -q .state)
+          if [ "$STATE" != "OPEN" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "PR is no longer open (state: $STATE), skipping"
+          fi
+
       - name: Checkout PR branch
+        if: steps.check.outputs.skip != 'true'
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate changeset from PR title
+        if: steps.check.outputs.skip != 'true'
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
