@@ -41,10 +41,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create git tags for releases
-        if: steps.changesets.outputs.published == 'true'
-        run: |
-          for pkg in $(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | "\(.name)@\(.version)"'); do
-            git tag "$pkg"
-            git push origin "$pkg"
-          done
