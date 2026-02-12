@@ -12,6 +12,13 @@
     "lint": {},
     "test": {
       "dependsOn": ["build"]
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "build-storybook": {
+      "outputs": ["storybook-static/**"]
     }
   }
 }
