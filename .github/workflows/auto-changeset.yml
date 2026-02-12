@@ -25,8 +25,17 @@ jobs:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          # Skip non-releasable conventional commit types
+          FILE=".changeset/pr-${PR_NUMBER}.md"
+
+          # Remove auto changeset for non-releasable conventional commit types
           if echo "$PR_TITLE" | grep -qiE '^(chore|docs|ci|test|build|style)(\(.+\))?:'; then
+            if [ -f "$FILE" ]; then
+              git rm "$FILE"
+              git config user.name "github-actions[bot]"
+              git config user.email "github-actions[bot]@users.noreply.github.com"
+              git commit -m "chore: remove auto changeset for PR #${PR_NUMBER}"
+              git push
+            fi
             echo "Non-releasable change type, skipping"
             exit 0
           fi
@@ -50,7 +59,6 @@ jobs:
           DESC=$(echo "$PR_TITLE" | sed -E 's/^[a-z]+(\(.+\))?!?:[[:space:]]*//')
 
           # Create changeset file
-          FILE=".changeset/pr-${PR_NUMBER}.md"
           printf '%s\n' "---" "'@igortullio-ui/react': ${BUMP}" "---" "" "${DESC}" > "$FILE"
 
           # Stage and check for actual changes
