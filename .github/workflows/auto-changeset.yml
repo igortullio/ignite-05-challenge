@@ -1,0 +1,67 @@
+name: Auto Changeset
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+    branches: [main]
+
+jobs:
+  auto-changeset:
+    # Skip the release PR created by changesets/action
+    if: github.head_ref != 'changeset-release/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate changeset from PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # Skip non-releasable conventional commit types
+          if echo "$PR_TITLE" | grep -qiE '^(chore|docs|ci|test|build|style)(\(.+\))?:'; then
+            echo "Non-releasable change type, skipping"
+            exit 0
+          fi
+
+          # Skip if a manual changeset exists (not auto-generated)
+          MANUAL=$(find .changeset -name '*.md' ! -name 'README.md' ! -name "pr-*.md" 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$MANUAL" -gt 0 ]; then
+            echo "Manual changeset found, skipping"
+            exit 0
+          fi
+
+          # Determine bump type from conventional commit prefix
+          BUMP="patch"
+          if echo "$PR_TITLE" | grep -qE '^feat(\(.+\))?!:|BREAKING CHANGE'; then
+            BUMP="major"
+          elif echo "$PR_TITLE" | grep -qE '^feat(\(.+\))?:'; then
+            BUMP="minor"
+          fi
+
+          # Extract description (remove conventional commit prefix)
+          DESC=$(echo "$PR_TITLE" | sed -E 's/^[a-z]+(\(.+\))?!?:[[:space:]]*//')
+
+          # Create changeset file
+          FILE=".changeset/pr-${PR_NUMBER}.md"
+          printf '%s\n' "---" "'@igortullio-ui/react': ${BUMP}" "---" "" "${DESC}" > "$FILE"
+
+          # Stage and check for actual changes
+          git add "$FILE"
+          if git diff --cached --quiet; then
+            echo "Changeset already up to date"
+            exit 0
+          fi
+
+          # Commit and push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: auto changeset for PR #${PR_NUMBER}"
+          git push
