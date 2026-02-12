@@ -2,4 +2,5 @@ node_modules
 dist
 .turbo
 storybook-static
+build-storybook.log
 .playwright-mcp
