@@ -3,4 +3,5 @@ dist
 .turbo
 storybook-static
 build-storybook.log
+debug-storybook.log
 .playwright-mcp
