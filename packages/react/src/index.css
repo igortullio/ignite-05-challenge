@@ -6,6 +6,7 @@
 @import "@fontsource/poppins/500.css";
 @import "@fontsource/poppins/600.css";
 @import "@fontsource/poppins/700.css";
+@source "./components";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -131,7 +132,12 @@
   html {
     @apply font-sans;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
   }
   *:focus-visible {
@@ -145,7 +151,9 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
