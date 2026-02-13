@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.4.0
+
+### Minor Changes
+
+- 7ddead6: add @source directive and format CSS selectors
+
 ## 3.3.1
 
 ### Patch Changes
