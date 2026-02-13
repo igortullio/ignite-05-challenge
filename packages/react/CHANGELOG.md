@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.3.0
+
+### Minor Changes
+
+- bd1088d: add Poppins heading font and improve base styles
+
 ## 3.2.2
 
 ### Patch Changes
