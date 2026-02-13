@@ -1,5 +1,11 @@
 # @igortullio-ui/react
 
+## 3.3.1
+
+### Patch Changes
+
+- b2f14c3: move scroll-behavior and reduced-motion styles out of @layer base
+
 ## 3.3.0
 
 ### Minor Changes
